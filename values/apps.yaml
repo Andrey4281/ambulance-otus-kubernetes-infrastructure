@@ -1,0 +1,6 @@
+spec:
+  source:
+    repoURL: https://yc-ambulance-service.gitlab.yandexcloud.net/otus-courses/ambulance-infrastructure.git
+    targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
