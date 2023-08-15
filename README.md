@@ -10,3 +10,14 @@ age-keygen -o key.txt
 export SOPS_AGE_KEY_FILE=$(pwd)/key.txt
 export SOPS_AGE_RECIPIENTS=age1yu4wcn3ykhlxfkne5te45v9vjcjuuv67h9ywl5kd09fnygr5df8q377uqh
 helm secrets enc ./gitlab-runner/gitlab-values.yaml
+4) Установка argo-cd:
+export HELM_EXPERIMENTAL_OCI=1 && \
+helm pull oci://cr.yandex/yc-marketplace/yandex-cloud/argo/chart/argo-cd \
+--version=4.5.3-1 \
+--untar \
+--untardir=charts
+5) Проброс портов
+kubectl port-forward svc/argocd-server -n argocd 8080:443
+admin
+0Q9iG87f77saKM-S
+
