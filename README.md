@@ -21,3 +21,8 @@ kubectl port-forward svc/argocd-server -n argocd 8080:443
 admin
 0Q9iG87f77saKM-S
 
+cr.yandex/crp6r4552fomhn1v2lgu/andrey4281/${project.artifactId}:${project.version}
+docker build -t cr.yandex/crp6r4552fomhn1v2lgu/andrey4281/appeal-service:0.0.6 .
+docker build -t cr.yandex/crp6r4552fomhn1v2lgu/andrey4281/doctor-service:0.0.6 .
+docker build -t cr.yandex/crp6r4552fomhn1v2lgu/andrey4281/nurse-service:0.0.6 .
+
