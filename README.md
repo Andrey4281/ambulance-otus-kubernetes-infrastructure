@@ -26,3 +26,8 @@ docker build -t cr.yandex/crp6r4552fomhn1v2lgu/andrey4281/appeal-service:0.0.6 .
 docker build -t cr.yandex/crp6r4552fomhn1v2lgu/andrey4281/doctor-service:0.0.6 .
 docker build -t cr.yandex/crp6r4552fomhn1v2lgu/andrey4281/nurse-service:0.0.6 .
 
+
+helm pull bitnami/kafka --untar --untardir=charts
+helm pull prometheus-community/kube-prometheus-stack --untar --untardir=charts
+helm -n monitoring install stack prometheus-community/kube-prometheus-stack -f stack-values.yaml
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
