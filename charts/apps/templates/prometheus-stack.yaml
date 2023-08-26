@@ -30,3 +30,10 @@ spec:
         - secrets+age-import:///helm-secrets-private-keys/key.txt?../../values/stack-values.yaml
   syncPolicy:
     automated: {}
+    syncOptions:
+      - ServerSideApply=true
+  ignoreDifferences:
+    - group: monitoring.coreos.com
+      kind: ServiceMonitor
+      jqPathExpressions:
+        - .spec.endpoints[]?.relabelings[]?.action
