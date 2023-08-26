@@ -16,3 +16,11 @@ helm -n argocd upgrade --install argocd charts/argo-cd -f argocd.yaml
 kubectl -n argocd create secret generic helm-secrets-private-keys --from-file=key.txt
 helm secrets enc argocd.yaml
 helm secrets -n argocd upgrade --install argocd charts/argo-cd -f argocd.yaml
+
+cd ../argo-cd
+kubectl apply -f argocd-namespace.yaml
+helm upgrade --install argocd charts/argo-cd -n argocd
+helm -n argocd upgrade --install argocd charts/argo-cd -f argocd.yaml
+kubectl -n argocd create secret generic helm-secrets-private-keys --from-file=key.txt
+helm secrets enc argocd.yaml
+helm secrets -n argocd upgrade --install argocd charts/argo-cd -f argocd.yaml
