@@ -31,3 +31,5 @@ helm pull bitnami/kafka --untar --untardir=charts
 helm pull prometheus-community/kube-prometheus-stack --untar --untardir=charts
 helm -n monitoring install stack prometheus-community/kube-prometheus-stack -f stack-values.yaml
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+
+helm upgrade --install kube-prometheus-stack prometheus-community/kube-prometheus-stack -n mon
