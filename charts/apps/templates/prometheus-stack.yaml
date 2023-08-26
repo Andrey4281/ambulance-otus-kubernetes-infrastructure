@@ -24,9 +24,5 @@ spec:
     path: charts/kube-prometheus-stack
     repoURL: {{ .Values.spec.source.repoURL }}
     targetRevision: {{ .Values.spec.source.targetRevision }}
-    # Указываем путь до файла
-    helm:
-      valueFiles:
-        - ../../values/stack-values.yaml
   syncPolicy:
     automated: {}
