@@ -32,6 +32,8 @@ spec:
     automated: {}
     syncOptions:
       - ServerSideApply=true
+      - Replace=true
+      - ApplyOutOfSyncOnly=true
   ignoreDifferences:
     - group: monitoring.coreos.com
       kind: ServiceMonitor
