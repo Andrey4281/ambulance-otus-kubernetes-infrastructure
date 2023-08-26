@@ -1,16 +1,10 @@
-{{- /*
-Copyright VMware, Inc.
-SPDX-License-Identifier: APACHE-2.0
-*/}}
-
-{{- if and .Values.log4j (not .Values.existingLog4jConfigMap) }}
+{{- if (include "kafka.log4j.createConfigMap" .) }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{- printf "%s-log4j-configuration" (include "common.names.fullname" .) -}}
-  namespace: {{ include "common.names.namespace" . | quote }}
+  name: {{ include "kafka.log4j.configMapName" . }}
+  namespace: {{ .Release.Namespace | quote }}
   labels: {{- include "common.labels.standard" . | nindent 4 }}
-    app.kubernetes.io/part-of: kafka
     {{- if .Values.commonLabels }}
     {{- include "common.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 4 }}
     {{- end }}
@@ -20,4 +14,4 @@ metadata:
 data:
   log4j.properties: |-
     {{- include "common.tplvalues.render" ( dict "value" .Values.log4j "context" $ ) | nindent 4 }}
-{{- end }}
+{{- end -}}

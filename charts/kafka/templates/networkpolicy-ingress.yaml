@@ -1,14 +1,9 @@
-{{- /*
-Copyright VMware, Inc.
-SPDX-License-Identifier: APACHE-2.0
-*/}}
-
 {{- if .Values.networkPolicy.enabled }}
 kind: NetworkPolicy
 apiVersion: {{ include "common.capabilities.networkPolicy.apiVersion" . }}
 metadata:
   name: {{ printf "%s-ingress" (include "common.names.fullname" .) }}
-  namespace: {{ include "common.names.namespace" . | quote }}
+  namespace: {{ .Release.Namespace | quote }}
   labels: {{- include "common.labels.standard" . | nindent 4 }}
     {{- if .Values.commonLabels }}
     {{- include "common.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 4 }}
@@ -25,7 +20,7 @@ spec:
   ingress:
     # Allow client connections
     - ports:
-        - port: {{ .Values.listeners.client.containerPort }}
+        - port: {{ .Values.containerPorts.client }}
       {{- if not .Values.networkPolicy.allowExternal }}
       from:
         - podSelector:
@@ -37,7 +32,7 @@ spec:
       {{- end }}
     # Allow communication inter-broker
     - ports:
-        - port: {{ .Values.listeners.interbroker.containerPort }}
+        - port: {{ .Values.containerPorts.internal }}
       from:
         - podSelector:
             matchLabels:
@@ -45,8 +40,8 @@ spec:
     # Allow External connection
     {{- if .Values.externalAccess.enabled }}
     - ports:
-        - port: {{ .Values.listeners.external.containerPort }}
-    {{- if .Values.networkPolicy.externalAccess.from }}
+        - port: {{ .Values.containerPorts.external }}
+    {{- if .Values.externalAccess.from }}
       from: {{- include "common.tplvalues.render" ( dict "value" .Values.networkPolicy.externalAccess.from "context" $ ) | nindent 8 }}
     {{- end }}
     {{- end }}

@@ -1,8 +1,3 @@
-{{/*
-Copyright VMware, Inc.
-SPDX-License-Identifier: APACHE-2.0
-*/}}
-
 {{/* vim: set filetype=mustache: */}}
 
 {{/*
@@ -51,53 +46,43 @@ Return a nodeAffinity definition
 {{- end -}}
 
 {{/*
-Return a topologyKey definition
-{{ include "common.affinities.topologyKey" (dict "topologyKey" "BAR") -}}
-*/}}
-{{- define "common.affinities.topologyKey" -}}
-{{ .topologyKey | default "kubernetes.io/hostname" -}}
-{{- end -}}
-
-{{/*
 Return a soft podAffinity/podAntiAffinity definition
-{{ include "common.affinities.pods.soft" (dict "component" "FOO" "customLabels" .Values.podLabels "extraMatchLabels" .Values.extraMatchLabels "topologyKey" "BAR" "context" $) -}}
+{{ include "common.affinities.pods.soft" (dict "component" "FOO" "extraMatchLabels" .Values.extraMatchLabels "context" $) -}}
 */}}
 {{- define "common.affinities.pods.soft" -}}
 {{- $component := default "" .component -}}
-{{- $customLabels := default (dict) .customLabels -}}
 {{- $extraMatchLabels := default (dict) .extraMatchLabels -}}
 preferredDuringSchedulingIgnoredDuringExecution:
   - podAffinityTerm:
       labelSelector:
-        matchLabels: {{- (include "common.labels.matchLabels" ( dict "customLabels" $customLabels "context" .context )) | nindent 10 }}
+        matchLabels: {{- (include "common.labels.matchLabels" .context) | nindent 10 }}
           {{- if not (empty $component) }}
           {{ printf "app.kubernetes.io/component: %s" $component }}
           {{- end }}
           {{- range $key, $value := $extraMatchLabels }}
           {{ $key }}: {{ $value | quote }}
           {{- end }}
-      topologyKey: {{ include "common.affinities.topologyKey" (dict "topologyKey" .topologyKey) }}
+      topologyKey: kubernetes.io/hostname
     weight: 1
 {{- end -}}
 
 {{/*
 Return a hard podAffinity/podAntiAffinity definition
-{{ include "common.affinities.pods.hard" (dict "component" "FOO" "customLabels" .Values.podLabels "extraMatchLabels" .Values.extraMatchLabels "topologyKey" "BAR" "context" $) -}}
+{{ include "common.affinities.pods.hard" (dict "component" "FOO" "extraMatchLabels" .Values.extraMatchLabels "context" $) -}}
 */}}
 {{- define "common.affinities.pods.hard" -}}
 {{- $component := default "" .component -}}
-{{- $customLabels := default (dict) .customLabels -}}
 {{- $extraMatchLabels := default (dict) .extraMatchLabels -}}
 requiredDuringSchedulingIgnoredDuringExecution:
   - labelSelector:
-      matchLabels: {{- (include "common.labels.matchLabels" ( dict "customLabels" $customLabels "context" .context )) | nindent 8 }}
+      matchLabels: {{- (include "common.labels.matchLabels" .context) | nindent 8 }}
         {{- if not (empty $component) }}
         {{ printf "app.kubernetes.io/component: %s" $component }}
         {{- end }}
         {{- range $key, $value := $extraMatchLabels }}
         {{ $key }}: {{ $value | quote }}
         {{- end }}
-    topologyKey: {{ include "common.affinities.topologyKey" (dict "topologyKey" .topologyKey) }}
+    topologyKey: kubernetes.io/hostname
 {{- end -}}
 
 {{/*
