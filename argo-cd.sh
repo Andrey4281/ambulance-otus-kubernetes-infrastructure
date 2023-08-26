@@ -1,4 +1,6 @@
 #!/bin/bash
+export SOPS_AGE_KEY_FILE=$(pwd)/key.txt
+export SOPS_AGE_RECIPIENTS=age1yu4wcn3ykhlxfkne5te45v9vjcjuuv67h9ywl5kd09fnygr5df8q377uqh
 cd namespaces
 kubectl apply -f argocd-namespace.yaml
 helm upgrade --install argocd charts/argo-cd -n argocd
