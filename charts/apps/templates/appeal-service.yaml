@@ -13,6 +13,9 @@ metadata:
   name: appeal-service
   # Обратите внимание на namespace – он должен быть argocd
   namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/appeal.update-strategy: latest
+    argocd-image-updater.argoproj.io/image-list: appeal=cr.yandex/crp6r4552fomhn1v2lgu/andrey4281/appeal-service
 spec:
   destination:
     # А вот тут уже неймспейс, куда будет устанавливаться сам чарт

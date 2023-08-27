@@ -13,6 +13,9 @@ metadata:
   name: nurse-service
   # Обратите внимание на namespace – он должен быть argocd
   namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/nurse.update-strategy: latest
+    argocd-image-updater.argoproj.io/image-list: nurse=cr.yandex/crp6r4552fomhn1v2lgu/andrey4281/nurse-service
 spec:
   destination:
     # А вот тут уже неймспейс, куда будет устанавливаться сам чарт

@@ -2,3 +2,4 @@
 /.idea/
 *.dec
 /sec-variable.sh
+/sa-key.json
