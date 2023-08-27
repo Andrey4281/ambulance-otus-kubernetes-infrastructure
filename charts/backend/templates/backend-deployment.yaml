@@ -39,7 +39,7 @@ spec:
         app: {{ .Values.deploy.podLabel }}
     spec:
       containers:
-        - image: "{{ .Values.deploy.image.name }}:{{ .Values.deploy.image.tag }}"
+        - image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           name: {{ .Values.containerName }}
           env:
             - name: RDS_HOSTNAME

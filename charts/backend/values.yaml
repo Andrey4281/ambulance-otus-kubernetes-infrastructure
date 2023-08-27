@@ -18,16 +18,15 @@ configName: "appeal-config"
 secretName: "appeal-app-secrets"
 serviceMonitorName: "appeal-monitor"
 serviceMonitorLabel: "appeal-monitor"
-
+image:
+  repository: andrey4281/appeal-service
+  tag: 0.0.4
 deploy:
   replicasCount: 1
   serviceLabel: appeal
   podLabel: appeal
   deploymentLabel: appeal
   containerPort: 8081
-  image:
-    name: andrey4281/appeal-service
-    tag: 0.0.4
   service:
     type: ClusterIP
     port:
