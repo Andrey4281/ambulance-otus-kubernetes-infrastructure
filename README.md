@@ -33,3 +33,13 @@ helm -n monitoring install stack prometheus-community/kube-prometheus-stack -f s
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 
 helm upgrade --install kube-prometheus-stack prometheus-community/kube-prometheus-stack -n mon
+
+kubectl port-forward svc/gateway-service -n gateway 7084:7084
+kubectl port-forward svc/stack-grafana -n monitoring 7000:80
+kubectl port-forward svc/prometheus-operated -n monitoring 9090:9090
+
+
+ambulance.otus.ru домен сделать
+
+kubectl get servicemonitors -n monitoring
+

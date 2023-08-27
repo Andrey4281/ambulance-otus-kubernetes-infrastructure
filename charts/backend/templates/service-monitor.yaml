@@ -5,6 +5,7 @@ metadata:
   name: {{ .Values.serviceMonitorName }}
   labels:
     app: {{ .Values.serviceMonitorLabel }}
+    release: stack
 
 spec:
   endpoints:
