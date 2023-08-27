@@ -33,4 +33,3 @@ spec:
     syncOptions:
       - ServerSideApply=true
       - Replace=true
-      - ApplyOutOfSyncOnly=true
