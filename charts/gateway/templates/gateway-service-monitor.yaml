@@ -5,6 +5,7 @@ metadata:
   name: gateway-monitor
   labels:
     app: gateway-monitor
+    release: stack
 
 spec:
   endpoints:
