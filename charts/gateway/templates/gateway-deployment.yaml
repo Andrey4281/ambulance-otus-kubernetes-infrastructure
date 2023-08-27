@@ -41,7 +41,7 @@ spec:
         app: gateway
     spec:
       containers:
-        - image: andrey4281/gateway-service:0.0.2
+        - image: "{{ .Values.deploy.image.name }}:{{ .Values.deploy.image.tag }}"
           name: gateway
           env:
             - name: APPEAL_SERVICE_URL

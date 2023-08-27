@@ -24,5 +24,9 @@ spec:
     path: charts/gateway
     repoURL: {{ .Values.spec.source.repoURL }}
     targetRevision: {{ .Values.spec.source.targetRevision }}
+    # Указываем путь до файла
+    helm:
+      valueFiles:
+        - secrets+age-import:///helm-secrets-private-keys/key.txt?../../values/gateway-service.yaml
   syncPolicy:
     automated: {}
