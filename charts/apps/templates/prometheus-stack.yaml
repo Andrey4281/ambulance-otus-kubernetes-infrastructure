@@ -34,8 +34,3 @@ spec:
       - ServerSideApply=true
       - Replace=true
       - ApplyOutOfSyncOnly=true
-  ignoreDifferences:
-    - group: monitoring.coreos.com
-      kind: ServiceMonitor
-      jqPathExpressions:
-        - .spec.endpoints[]?.relabelings[]?.action
