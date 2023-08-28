@@ -8,3 +8,4 @@ kubectl -n argocd create secret generic helm-secrets-private-keys --from-file=ke
 helm secrets -n argocd upgrade --install argocd charts/argo-cd -f values/argocd.yaml
 # sert manager
 kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.9.1/cert-manager.yaml
+kubectl apply -f cluster-issuer/acme-issuer.yaml
