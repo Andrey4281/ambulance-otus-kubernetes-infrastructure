@@ -43,3 +43,5 @@ ambulance.otus.ru домен сделать
 
 kubectl get servicemonitors -n monitoring
 
+helm pull ingress-nginx/ingress-nginx --untar --untardir=charts
+
