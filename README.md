@@ -46,4 +46,6 @@ kubectl get servicemonitors -n monitoring
 helm pull ingress-nginx/ingress-nginx --untar --untardir=charts
 
 kubectl describe certificaterequest -n gateway
+grafana.158.160.57.88.nip.io
+prom-operator
 
