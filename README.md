@@ -45,3 +45,5 @@ kubectl get servicemonitors -n monitoring
 
 helm pull ingress-nginx/ingress-nginx --untar --untardir=charts
 
+kubectl describe certificaterequest -n gateway
+

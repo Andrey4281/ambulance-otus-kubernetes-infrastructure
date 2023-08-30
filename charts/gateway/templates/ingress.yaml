@@ -12,10 +12,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - otus.158.160.40.146.nip.io
+        - otus.84.252.129.109.nip.io
       secretName: letsencrypt
   rules:
-    - host: otus.158.160.40.146.nip.io
+    - host: otus.84.252.129.109.nip.io
       http:
         paths:
           - path: /
