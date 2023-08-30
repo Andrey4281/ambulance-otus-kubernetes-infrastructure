@@ -9,12 +9,13 @@ metadata:
     kubernetes.io/tls-acme: "true"
     cert-manager.io/acme-challenge-type: http01
 spec:
+  ingressClassName: nginx
   tls:
     - hosts:
-        - ambulance.otus.ru
+        - otus.158.160.40.146.nip.io
       secretName: letsencrypt
   rules:
-    - host: ambulance.otus.ru
+    - host: otus.158.160.40.146.nip.io
       http:
         paths:
           - path: /
