@@ -49,4 +49,6 @@ kubectl describe certificaterequest -n gateway
 grafana.158.160.57.88.nip.io
 prom-operator
 kubectl get ingress --all-namespaces
+prometheus.158.160.57.88.nip.io
+argocd.158.160.57.88.nip.io
 
