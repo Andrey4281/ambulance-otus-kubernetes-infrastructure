@@ -26,9 +26,11 @@ docker build -t cr.yandex/crp6r4552fomhn1v2lgu/andrey4281/appeal-service:0.0.6 .
 docker build -t cr.yandex/crp6r4552fomhn1v2lgu/andrey4281/doctor-service:0.0.6 .
 docker build -t cr.yandex/crp6r4552fomhn1v2lgu/andrey4281/nurse-service:0.0.6 .
 
+helm repo add grafana https://grafana.github.io/helm-charts
 
 helm pull bitnami/kafka --untar --untardir=charts
 helm pull prometheus-community/kube-prometheus-stack --untar --untardir=charts
+helm pull grafana/loki-stack --untar --untardir=charts
 helm -n monitoring install stack prometheus-community/kube-prometheus-stack -f stack-values.yaml
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 
@@ -51,4 +53,8 @@ prom-operator
 kubectl get ingress --all-namespaces
 prometheus.158.160.57.88.nip.io
 argocd.158.160.57.88.nip.io
+WxQHcVEb3oOpAfu-
+
+https://artifacthub.io/packages/helm/grafana/loki-stack
+https://dev.to/luafanti/spring-boot-logging-with-loki-promtail-and-grafana-loki-stack-aep
 
