@@ -57,4 +57,7 @@ WxQHcVEb3oOpAfu-
 
 https://artifacthub.io/packages/helm/grafana/loki-stack
 https://dev.to/luafanti/spring-boot-logging-with-loki-promtail-and-grafana-loki-stack-aep
+https://loki.158.160.57.88.nip.io/
+admin
+X1AgBDjcrWevavSox1qyYv8XCOFK0qwQuurKI4Lp
 
