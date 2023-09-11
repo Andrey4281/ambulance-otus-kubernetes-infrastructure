@@ -59,5 +59,6 @@ https://artifacthub.io/packages/helm/grafana/loki-stack
 https://dev.to/luafanti/spring-boot-logging-with-loki-promtail-and-grafana-loki-stack-aep
 https://loki.158.160.57.88.nip.io/
 admin
-X1AgBDjcrWevavSox1qyYv8XCOFK0qwQuurKI4Lp
+p6BAhmCOWzEfvL5QP512nhydvCUu5pAMn2og2HL8
+kubectl get secret --namespace loki loki-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
 
