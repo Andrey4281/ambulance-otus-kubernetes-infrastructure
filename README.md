@@ -46,6 +46,8 @@ ambulance.otus.ru домен сделать
 kubectl get servicemonitors -n monitoring
 
 helm pull ingress-nginx/ingress-nginx --untar --untardir=charts
+helm pull jetstack/cert-manager --untar --untardir=charts
+
 
 kubectl describe certificaterequest -n gateway
 grafana.158.160.57.88.nip.io
@@ -61,4 +63,8 @@ https://loki.158.160.57.88.nip.io/
 admin
 p6BAhmCOWzEfvL5QP512nhydvCUu5pAMn2og2HL8
 kubectl get secret --namespace loki loki-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+
+1) Execute job to create k8s cluster and infrastructure
+2) Registry?
+3) execute install.sh script
 
