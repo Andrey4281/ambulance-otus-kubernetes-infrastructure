@@ -54,7 +54,7 @@ grafana.158.160.57.88.nip.io
 prom-operator
 kubectl get ingress --all-namespaces
 prometheus.158.160.57.88.nip.io
-argocd.158.160.57.88.nip.io
+argocd.84.252.139.41.nip.io
 WxQHcVEb3oOpAfu-
 
 https://artifacthub.io/packages/helm/grafana/loki-stack
@@ -67,4 +67,6 @@ kubectl get secret --namespace loki loki-grafana -o jsonpath="{.data.admin-passw
 1) Execute job to create k8s cluster and infrastructure
 2) Registry?
 3) execute install.sh script
+
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 
